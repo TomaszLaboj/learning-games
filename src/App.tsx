@@ -71,7 +71,11 @@ function App() {
       ) : (
         "Time's up!"
       )}
-      <button onClick={handleStartTime}>Start time</button>
+      {!delay ? (
+        <button onClick={handleStartTime}>Start time</button>
+      ) : (
+        <button disabled>Start time</button>
+      )}
       <p>{`${stats.correct} out of ${stats.total} correct`}</p>
       <br />
       <label>
