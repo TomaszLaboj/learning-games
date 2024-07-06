@@ -2,16 +2,20 @@ import { useState, useEffect } from "react";
 import questions from "./assets/questions.json";
 import "./App.css";
 import useInterval from "use-interval";
+import QuestionComponent from "./components/Question";
 
 const questionSet = questions.questionSet;
-type Question = { question: string; answer: string };
+export type QuestionType = { question: string; answer: string };
+
 function App() {
   const chooseRandomQuestion = () => {
     const randomIndex = Math.floor(Math.random() * questionSet.length);
     return questionSet[randomIndex];
   };
 
-  const [question, setQuestion] = useState<Question>(chooseRandomQuestion());
+  const [question, setQuestion] = useState<QuestionType>(
+    chooseRandomQuestion()
+  );
   const [userAnswer, setUserAnswer] = useState("");
   const [result, setResult] = useState("");
   const [stats, setStats] = useState({ correct: 0, total: 0 });
@@ -78,14 +82,12 @@ function App() {
       )}
       <p>{`${stats.correct} out of ${stats.total} correct`}</p>
       <br />
-      <label>
-        {question.question + " = "}
-        <input
-          value={userAnswer}
-          onChange={(event) => handleAnswerInput(event.target.value)}
-        />
-      </label>
-      <button onClick={handleSubmitAnswer}>Submit</button>
+      <QuestionComponent
+        question={question}
+        userAnswer={userAnswer}
+        handleAnswerInput={handleAnswerInput}
+        handleSubmitAnswer={handleSubmitAnswer}
+      />
       <p>{result === "" ? "" : result}</p>
     </>
   );
