@@ -57,7 +57,6 @@ function App() {
 
   const resetResultAndAnswer = () => {
     setResult("");
-    setUserAnswer("");
   };
 
   const handleSubmitAnswer = () => {
@@ -68,6 +67,7 @@ function App() {
       setStats({ correct: stats.correct, total: stats.total + 1 });
       setResult("Wrong answer. The correct answer is " + question.answer);
     }
+    setUserAnswer("");
     setQuestion(chooseRandomQuestion());
     setTimeout(resetResultAndAnswer, 2000);
   };
