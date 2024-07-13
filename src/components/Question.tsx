@@ -23,9 +23,16 @@ function QuestionComponent({
         <input
           value={userAnswer}
           onChange={(event) => handleInput(event.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              document.getElementById("submit")?.click();
+            }
+          }}
         />
       </p>
-      <button onClick={handleSubmitAnswer}>Submit</button>
+      <button id="submit" onClick={handleSubmitAnswer}>
+        Submit
+      </button>
     </>
   );
 }
