@@ -1,4 +1,4 @@
-import type { QuestionType } from "../App";
+import type { QuestionType } from "./MathQuiz";
 
 interface QuestionProps {
   question: QuestionType;
