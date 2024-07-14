@@ -17,7 +17,6 @@ function CapitalsQuiz() {
   const chooseRandomCountry = () => {
     const randomIndex = Math.floor(Math.random() * countries.length);
     const randomCountry = countries[randomIndex];
-
     return randomCountry;
   };
 
@@ -41,27 +40,24 @@ function CapitalsQuiz() {
     chooseRandomIndexOfFour()
   );
   const [result, setResult] = useState("");
-  // some countries have no capital Antarctica is null,
+
   const handleCheckAnswer = (city: string | null) => {
-    console.log(city);
     if (city === fourRandomCountries[randomIndexOfFour].capital) {
-      setResult("good answer");
+      setResult("Good answer");
     } else {
-      setResult(
-        "wrong answer - correct answer is " +
-          fourRandomCountries[randomIndexOfFour].capital
-      );
+      const correctAnswer = fourRandomCountries[randomIndexOfFour].capital
+        ? fourRandomCountries[randomIndexOfFour].capital
+        : "doesn't have a capital";
+      setResult("wrong answer - correct answer is " + correctAnswer);
     }
   };
+
   const handleNextQuestion = () => {
     setResult("");
     setFourRandomCountries(chooseFourRandomCountries());
     setRandomIndexOfFour(chooseRandomIndexOfFour);
   };
-  console.log(fourRandomCountries[randomIndexOfFour].code);
-  console.log(
-    `https://flagsapi.com/${fourRandomCountries[randomIndexOfFour].code}/flat/64.png`
-  );
+
   return (
     <>
       <h1>Capitals Quiz</h1>
@@ -80,7 +76,7 @@ function CapitalsQuiz() {
             onClick={() => handleCheckAnswer(country.capital)}
             key={country.name}
           >
-            {country.capital ? country.capital : "has no capital"}
+            {country.capital ? country.capital : "doesn't have a capital"}
           </button>
         ))}
       </p>
