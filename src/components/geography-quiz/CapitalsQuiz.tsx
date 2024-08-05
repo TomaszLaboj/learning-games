@@ -22,9 +22,12 @@ function CapitalsQuiz() {
 
   const chooseFourRandomCountries = () => {
     const fourRandomCountries: Country[] = [];
-    for (let i = 0; i < 4; i++) {
+
+    while (fourRandomCountries.length < 4) {
       const randomCountry = chooseRandomCountry();
-      fourRandomCountries.push(randomCountry);
+      if (!fourRandomCountries.includes(randomCountry)) {
+        fourRandomCountries.push(randomCountry);
+      }
     }
     return fourRandomCountries;
   };
@@ -48,7 +51,7 @@ function CapitalsQuiz() {
       const correctAnswer = fourRandomCountries[randomIndexOfFour].capital
         ? fourRandomCountries[randomIndexOfFour].capital
         : "doesn't have a capital";
-      setResult("wrong answer - correct answer is " + correctAnswer);
+      setResult("Wrong answer - correct answer is " + correctAnswer);
     }
   };
 
