@@ -2,6 +2,8 @@ import MathQuiz from "./components/math-quiz/MathQuiz";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import CapitalsQuiz from "./components/geography-quiz/CapitalsQuiz";
 import RootLayout from "./Root";
+import Title from "./components/home/Title";
+
 function App() {
   const router = createBrowserRouter([
     {
@@ -19,7 +21,12 @@ function App() {
       ],
     },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <Title />
+      <RouterProvider router={router} />;
+    </>
+  );
 }
 
 export default App;
