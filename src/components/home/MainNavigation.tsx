@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import "./MainNavigation.css";
 
 function MainNavigation() {
   return (
@@ -8,7 +9,6 @@ function MainNavigation() {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-
           <li>
             <NavLink to="/math-quiz" end>
               Math Quiz
