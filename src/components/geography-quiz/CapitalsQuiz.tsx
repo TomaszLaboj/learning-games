@@ -1,5 +1,6 @@
 import countriesData from "./assets/countries-capitals.json";
 import { useState } from "react";
+import "./CapitalsQuiz.css";
 
 interface Country {
   name: string;
@@ -64,27 +65,29 @@ function CapitalsQuiz() {
   return (
     <>
       <h1>Capitals Quiz</h1>
-      <p>
-        What is the capital of {fourRandomCountries[randomIndexOfFour].name}?
-      </p>
-      <p>
-        <img
-          src={`https://flagsapi.com/${fourRandomCountries[randomIndexOfFour].code}/flat/64.png`}
-        />
-      </p>
-      <p>
-        {fourRandomCountries.map((country) => (
-          <button
-            type="button"
-            onClick={() => handleCheckAnswer(country.capital)}
-            key={country.name}
-          >
-            {country.capital ? country.capital : "doesn't have a capital"}
-          </button>
-        ))}
-      </p>
-      <p>{result ? result : ""}</p>
-      <button onClick={handleNextQuestion}>Next question?</button>
+      <div className={"main-container"}>
+        <p>
+          What is the capital of {fourRandomCountries[randomIndexOfFour].name}?
+        </p>
+        <p className={"flag"}>
+          <img
+            src={`https://flagsapi.com/${fourRandomCountries[randomIndexOfFour].code}/flat/64.png`}
+          />
+        </p>
+        <div className={"buttons"}>
+          {fourRandomCountries.map((country) => (
+            <button
+              type="button"
+              onClick={() => handleCheckAnswer(country.capital)}
+              key={country.name}
+            >
+              {country.capital ? country.capital : "doesn't have a capital"}
+            </button>
+          ))}
+        </div>
+        <p>{result ? result : ""}</p>
+        <button onClick={handleNextQuestion}>Next question?</button>
+      </div>
     </>
   );
 }

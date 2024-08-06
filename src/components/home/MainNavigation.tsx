@@ -9,7 +9,6 @@ function MainNavigation() {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-
           <li>
             <NavLink to="/math-quiz" end>
               Math Quiz
