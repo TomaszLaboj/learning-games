@@ -4,5 +4,13 @@
   text-shadow: 4px 3px #ff0000;
   font-size: 72px;
   text-align: center;
+}
+
+.background {
   background-color: firebrick;
+}
+
+.login {
+  padding: 1rem;
+  color: aliceblue;
 }
