@@ -1,4 +1,4 @@
-import MathQuiz from "./components/math-quiz/MathQuiz";
+import MathQuiz from "./components/math-quiz/Calculations/MathQuiz";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import CapitalsQuiz from "./components/geography-quiz/CapitalsQuiz";
 import RootLayout from "./Root";
