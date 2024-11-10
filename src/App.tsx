@@ -27,7 +27,7 @@ function App() {
   return (
     <>
       <Title loggedIn={userLoggedIn} logInOut={setUserLoggedIn} />
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </>
   );
 }
