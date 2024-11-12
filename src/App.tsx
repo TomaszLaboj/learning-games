@@ -8,7 +8,12 @@ import UserStatistics from "./components/home/UserStatistics";
 
 function App() {
   const [userLoggedIn, setUserLoggedIn] = useState<boolean>(false);
-  console.log(userLoggedIn);
+  const [userPoints, setUserPoints] = useState(0);
+
+  const addPoints = (points: number) => {
+    setUserPoints((prev) => prev + points);
+  };
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -16,7 +21,7 @@ function App() {
       children: [
         {
           path: "math-quiz",
-          element: <MathQuiz />,
+          element: <MathQuiz updatePoints={addPoints} />,
         },
         {
           path: "capitals-quiz",
@@ -30,7 +35,7 @@ function App() {
       <Title loggedIn={userLoggedIn} logInOut={setUserLoggedIn} />
       <RouterProvider router={router} />
       {userLoggedIn ? (
-        <UserStatistics userPoints={100000000000} />
+        <UserStatistics userPoints={userPoints} />
       ) : (
         "Please log in to save progress"
       )}
