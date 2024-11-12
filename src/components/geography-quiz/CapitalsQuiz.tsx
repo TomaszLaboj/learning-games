@@ -8,7 +8,11 @@ interface Country {
   code: string;
 }
 
-function CapitalsQuiz() {
+type CapitalsQuizProps = {
+  updatePoints: (points: number) => void;
+};
+
+function CapitalsQuiz({ updatePoints }: CapitalsQuizProps) {
   const countries: Country[] = countriesData.map((country) => ({
     name: country.name,
     capital: country.capital,
@@ -45,9 +49,14 @@ function CapitalsQuiz() {
   );
   const [result, setResult] = useState("");
 
+  const updateTotalPoints = (points: number) => {
+    updatePoints(points);
+  };
+
   const handleCheckAnswer = (city: string | null) => {
     if (city === fourRandomCountries[randomIndexOfFour].capital) {
       setResult("Good answer");
+      updateTotalPoints(1);
     } else {
       const correctAnswer = fourRandomCountries[randomIndexOfFour].capital
         ? fourRandomCountries[randomIndexOfFour].capital

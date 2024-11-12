@@ -25,7 +25,7 @@ function App() {
         },
         {
           path: "capitals-quiz",
-          element: <CapitalsQuiz />,
+          element: <CapitalsQuiz updatePoints={addPoints} />,
         },
       ],
     },
