@@ -6,7 +6,11 @@ import QuestionComponent from "./Question";
 const questionSet = questions.questionSet;
 export type QuestionType = { question: string; answer: string };
 
-function MathQuiz() {
+type MathQuizProps = {
+  updatePoints: (points: number) => void;
+};
+
+function MathQuiz({ updatePoints }: MathQuizProps) {
   const chooseRandomQuestion = () => {
     const randomIndex = Math.floor(Math.random() * questionSet.length);
     return questionSet[randomIndex];
@@ -58,10 +62,14 @@ function MathQuiz() {
     setResult("");
   };
 
+  const updateTotalPoints = (points: number) => {
+    updatePoints(points);
+  };
   const handleSubmitAnswer = () => {
     if (userAnswer === question.answer) {
       setStats({ correct: stats.correct + 1, total: stats.total + 1 });
       setResult("Good answer");
+      updateTotalPoints(1);
     } else {
       setStats({ correct: stats.correct, total: stats.total + 1 });
       setResult("Wrong answer. The correct answer is " + question.answer);
